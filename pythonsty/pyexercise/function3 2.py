@@ -3,7 +3,7 @@
 
 #函数属性,函数是对象也有属性
 def cang():
-    '''This is function of changlaoshi'''
+
     pass
 
 #变量／参数／形参／实参

@@ -12,7 +12,7 @@ def bar():
     print "I am in bar()"
 
 @foo                  #foo()是装饰器函数，使用@foo来装饰bar()函数。
-def bar2():
+def bar2():           #装饰器本身是一个函数，将被装饰的类（后面会介绍这种东西）或者函数当作参数传递给装饰器函数
     print "I am in bar2()"
 
 if __name__ == "__main__":
