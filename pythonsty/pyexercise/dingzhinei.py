@@ -28,7 +28,7 @@ class RoundFloat(object):    # Python 3: class RoundFloat:
 #__repr__ = __str__ 的含义是在类被调用，即向变量提供__str__()里的内容。
     __repr__ = __str__
 
-# 自定义的分数类型
+# 自定义的分数类
 class Fraction1(object):        #Python 3: class Fraction:
     def __init__(self, number, denom=1):
         self.number = number
@@ -39,6 +39,25 @@ class Fraction1(object):        #Python 3: class Fraction:
 
     __repr__ = __str__
 
+
+    def __add__(self, other):
+        lcm_num = lcm(self.denom, other.denom)
+        number_sum = (lcm_num / self.denom * self.number) + (lcm_num / other.denom * other.number)
+        return Fraction1(number_sum, lcm_num)
+
+# 最大公约数
+def gcd(a, b):
+    if not a > b:               # 判断a b 两个数的大小，大的做被除数，小的做除数
+        a, b = b, a
+    while b != 0:
+        remainder = a % b
+        a, b = b, remainder
+    return a
+# 最小公倍数
+def lcm(a, b):
+    return (a * b) / gcd(a, b)
+
+
 if __name__ == "__main__":
     r = RoundFloat(2.185)
     print r             # Python 3: print(r)
@@ -46,3 +65,7 @@ if __name__ == "__main__":
 
     f = Fraction1(2, 3)
     print f        #Python 3: print(f)
+
+
+    print gcd(4, 21)
+    print lcm(4, 21)
